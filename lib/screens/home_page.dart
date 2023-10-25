@@ -35,6 +35,7 @@ class HomePage extends StatelessWidget {
               future: AllProductsServices().getAllProduct(),
               builder: (context,snapshot) {
                if(snapshot.hasData){
+                 print("has data");
                  List <ProductModel>products = snapshot.data!;
                  return GridView.builder(
                    itemCount: products.length,
@@ -46,12 +47,13 @@ class HomePage extends StatelessWidget {
                      mainAxisSpacing: 100,
                    ),
                    itemBuilder: (context, index) {
-                     return CustomCard(product: products[index],)??;
+                     return CustomCard(product: products[index],);
                    },
                  );
                }
                else{
-                 return const Center(child: CircularProgressIndicator(),
+                 print("${snapshot.error}");
+                 return Center(child: CircularProgressIndicator(),
                  );
                }
               }

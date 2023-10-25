@@ -1,16 +1,19 @@
 class ProductModel {
-  final int id;
+  final dynamic id;
   final String title;
-  final double price;
+  final dynamic price;
   final String description;
   final String image;
-  final RatingModel? rating;
+  final String categoty;
+
+  final RatingModel rating;
 
   ProductModel( {
     required this.id,
     required this.title,
     required this.price,
     required this.description,
+    required this.categoty,
     required this.image,
     required this.rating,
   });
@@ -22,15 +25,15 @@ class ProductModel {
       price: jsonData['price'],
       description: jsonData['description'],
       image: jsonData['image'],
-      rating: jsonData['rating']!=null?
-      RatingModel.fromJson(jsonData['rating']):null,
+      rating: RatingModel.fromJson(jsonData['rating']),
+      categoty:jsonData['category'],
     );
   }
 }
 
 
 class RatingModel {
-  final double rate;
+  final dynamic rate;
   final int count;
 
 
